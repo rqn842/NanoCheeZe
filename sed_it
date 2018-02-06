@@ -1,0 +1,9 @@
+## sed -i.hn s/HoboNickels/NanoCheeZe/g `find -name \*.cpp`
+## sed -i.hn s/HoboNickels/NanoCheeZe/g `find -name \*.h`
+## sed -i.hn s/HoboNickels/NanoCheeZe/g `find -name \*.S`
+## sed -i.hn s/HoboNickels/NanoCheeZe/g `find -name makefile.\*`
+
+sed -i.hn s/hobonickels/nanocheeze/g `find -name \*.cpp`
+sed -i.hn s/hobonickels/nanocheeze/g `find -name \*.h`
+sed -i.hn s/hobonickels/nanocheeze/g `find -name \*.S`
+sed -i.hn s/hobonickels/nanocheeze/g `find -name makefile.\*`
