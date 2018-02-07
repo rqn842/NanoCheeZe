@@ -1,5 +1,0 @@
-#! /bin/bash
-#Compile NanoCheeZe with Berkley DB 4.8
-#-----------------------------------
-cd ~/NanoCheeZe/src
-make -s -j3 -f makefile.unix

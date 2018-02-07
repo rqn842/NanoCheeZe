@@ -1,4 +1,12 @@
+meh
+./Makefile
 build
 db4
 *.o
 *.a
+bak
+*.P
+bitcoin_en.qm
+bitcoin_pl.qm
+bitcoin_ru.qm
+qrc_bitcoin.cpp

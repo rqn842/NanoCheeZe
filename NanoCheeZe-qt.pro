@@ -1,5 +1,4 @@
-TEMPLATE = app
-TARGET = HoboNickels-qt
+TARGET = NanoCheeZe-qt
 VERSION = 2.0.1.0
 QT += core gui network
 INCLUDEPATH += src src/json src/qt
@@ -108,7 +107,8 @@ contains(USE_LEVELDB, -) {
     SOURCES += src/txdb-leveldb.cpp
     !win32 {
     # we use QMAKE_CXXFLAGS_RELEASE even without RELEASE=1 because we use RELEASE to indicate linking preferences not -O preferences
-    genleveldb.commands = cd $$PWD/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX $(MAKE) OPT=\"$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE\" libleveldb.a libmemenv.a
+    ## genleveldb.commands = cd $$PWD/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX $(MAKE) OPT=\"$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE\" libleveldb.a libmemenv.a
+    genleveldb.commands = cd $$PWD/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX $(MAKE) OPT=\"$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE\" libleveldb.so libmemenv.so
     } else {
         # make an educated guess about what the ranlib command is called
         isEmpty(QMAKE_RANLIB) {
@@ -353,7 +353,7 @@ SOURCES += src/qt/test/test_main.cpp \
 HEADERS += src/qt/test/uritests.h
 DEPENDPATH += src/qt/test
 QT += testlib
-TARGET = HoboNickels-qt_test
+TARGET = NanoCheeZe-qt_test
 DEFINES += BITCOIN_QT_TEST
 }
 
@@ -431,8 +431,8 @@ macx:HEADERS += src/qt/macdockiconhandler.h src/qt/macnotificationhandler.h
 macx:OBJECTIVE_SOURCES += src/qt/macdockiconhandler.mm src/qt/macnotificationhandler.mm
 macx:LIBS += -framework Foundation -framework ApplicationServices -framework AppKit
 macx:DEFINES += MAC_OSX MSG_NOSIGNAL=0
-macx:ICON = src/qt/res/icons/HoboNickels.icns
-macx:TARGET = "HoboNickels-Qt"
+macx:ICON = src/qt/res/icons/NanoCheeZe.icns
+macx:TARGET = "NanoCheeZe-Qt"
 macx:QMAKE_CFLAGS_THREAD += -pthread
 macx:QMAKE_LFLAGS_THREAD += -pthread
 macx:QMAKE_CXXFLAGS_THREAD += -pthread

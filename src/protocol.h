@@ -18,7 +18,8 @@
 extern bool fTestNet;
 static inline unsigned short GetDefaultPort(const bool testnet = fTestNet)
 {
-    return testnet ? 17372 : 7372;
+// NanoCHeeZe changed default ports from 7372/7374 to 12781/12782
+    return testnet ? 12781 : 12782;
 }
 
 
