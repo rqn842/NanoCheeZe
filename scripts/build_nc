@@ -10,19 +10,21 @@
 ## this creates the directory ~/NanoCheeze so it MUST NOT EXIST
 ## #----------------------------
 cd ~
-git clone https://github.com/Crypto-Expert/NanoCheeZe.git
+git clone https://github.com/rqn842/NanoCheeZe.git
 
 #Download and compile Berkley DB 4.8
 #-----------------------------------
 ##
-## added MEH  to resolve build error : LRELEASE not found
+## need these to resolve build error : LRELEASE not found
+## your milage may vary
 ##
 sudo apt-get install qttools5-dev-tools
 sudo apg-get install libminiupnpc-dev
 sudo apt-get install protobuf
 
 ##
-## Build BERKELEY DB 4.8
+## Build BERKELEY DB 4.8 and stash it where NanoCheeZe makefile 
+## can find it
 cd ~
 wget 'http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz'
 tar -xzvf db-4.8.30.NC.tar.gz

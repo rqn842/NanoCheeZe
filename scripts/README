@@ -1,4 +1,6 @@
-## some usefull scripts to automate building NanoCheeZe from source
+some usefull scripts to automate building NanoCheeZe from source
+I used a home directory of /home/rqn842. Modify as required for
+your environment
 
 get_depends - a lot of apt-get install for dependancys
 build_nc - clones the git repo into ~ and builds the daemon , nanocheezed
