@@ -1,0 +1,21 @@
+#! /bin/bash
+##
+## work in progress
+##
+## get the mingw-64 librarys, headers and tools
+## two of these are redundant ... depending on your apt path
+##  DONE apt-get install mingw-w64
+##  DONE apt-get install mingw-w64-common
+##  DONE apt-get install mingw-w64-tools
+##  DONE apt-get install mingw-w64-x86-64-dev
+##
+## get the dependancies for the MXE cross build environment
+##
+    ##libtool-bin not found
+## DONE apt-get install \
+## DONE     autoconf automake autopoint bash bison bzip2 flex gettext\
+## DONE     git g++ gperf intltool libffi-dev libgdk-pixbuf2.0-dev \
+## DONE     libltdl-dev libssl-dev libxml-parser-perl make \
+## DONE     openssl p7zip-full patch perl pkg-config python ruby scons \
+## DONE     sed unzip wget xz-utils
+##

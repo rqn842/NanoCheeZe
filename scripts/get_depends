@@ -1,0 +1,29 @@
+## 
+## install the dependancies for building NanoXheeZe
+## 
+## Mike Hester 02/05/2018
+
+sudo apt-get update
+sudo apt-get upgrade
+## 
+sudo apt-get install build-essential libtool autotools-dev autoconf pkg-config libssl-dev
+sudo apt-get install libboost-all-dev
+sudo apt-get install libqt5gui5 libqt5core5 libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev protobuf-compiler
+sudo apt-get install libqrencode-dev
+sudo apt-get install libminiupnpc-dev
+suto apt-get install git
+
+#Download and compile Berkley DB 4.8
+#-----------------------------------
+##
+## added MEH  to resolve build error : LRELEASE not found
+##
+sudo apt-get install qttools5-dev-tools
+sudo apg-get install libminiupnpc-dev
+sudo apt-get install protobuf
+
+##
+## Build BERKELEY DB 4.8
+cd ~
+wget 'http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz'
+tar -xzvf db-4.8.30.NC.tar.gz

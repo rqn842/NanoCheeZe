@@ -1,0 +1,11 @@
+## cosmetic change from HoboNickels to NanoCheeZe
+## missed a few things in the sc/qt/res area
+sed -i.hn s/HoboNickels/NanoCheeZe/g `find -name \*.cpp`
+sed -i.hn s/HoboNickels/NanoCheeZe/g `find -name \*.h`
+sed -i.hn s/HoboNickels/NanoCheeZe/g `find -name \*.S`
+sed -i.hn s/HoboNickels/NanoCheeZe/g `find -name makefile.\*`
+
+-i.hn s/hobonickels/nanocheeze/g `find -name \*.cpp`
+-i.hn s/hobonickels/nanocheeze/g `find -name \*.h`
+-i.hn s/hobonickels/nanocheeze/g `find -name \*.S`
+-i.hn s/hobonickels/nanocheeze/g `find -name makefile.\*`

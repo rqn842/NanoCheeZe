@@ -1,0 +1,37 @@
+## 
+## build NanoCheeZe daemon on Ubuntu 14.0.1
+## assumes you have already run build_depends
+## and built tht Berkely DB
+## 
+## Mike Hester 02/05/2018
+
+## 
+## # Download NanoCheeZe source code
+## this creates the directory ~/NanoCheeze so it MUST NOT EXIST
+## #----------------------------
+cd ~
+git clone https://github.com/Crypto-Expert/NanoCheeZe.git
+
+#Download and compile Berkley DB 4.8
+#-----------------------------------
+##
+## added MEH  to resolve build error : LRELEASE not found
+##
+sudo apt-get install qttools5-dev-tools
+sudo apg-get install libminiupnpc-dev
+sudo apt-get install protobuf
+
+##
+## Build BERKELEY DB 4.8
+cd ~
+wget 'http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz'
+tar -xzvf db-4.8.30.NC.tar.gz
+mkdir -f NanoCheeZe/db4/
+cd ~/db-4.8.30.NC/build_unix
+../dist/configure --enable-cxx --disable-shared --with-pic --prefix=/home/rqn842/NanoCheeZe/db4/
+make install
+
+#Compile NanoCheeZe daemon with Berkley DB 4.8
+#-----------------------------------
+cd ~/NanoCheeZe/src
+make -f makefile.unix

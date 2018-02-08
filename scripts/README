@@ -1,0 +1,7 @@
+## some usefull scripts to automate building NanoCheeZe from source
+
+get_depends - a lot of apt-get install for dependancys
+build_nc - clones the git repo into ~ and builds the daemon , nanocheezed
+build_qt - builds the GUI interfae NanoCheeze-qt
+build_win64 - TBD build .exe's for Windoze
+sed_it - the global sed's that converted HoboNickels to NanoCheeZe
