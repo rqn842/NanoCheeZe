@@ -1,14 +1,43 @@
+#! /bin/bash 
 ##
 ## Build the GUI interface to HoboNickels 
 ## Based mostly on the DOCS and some trial/error/repeat
 ## Asumes you have downloaded the repository into ~/NanoCheeZe
 ##
-## Mike Hester 02/05/2018
-sudo    apt-get install qt5-default qt5-qmake qtbase5-dev-tools qttools5-dev-tools \
-        build-essential libboost-dev libboost-system-dev \
-        libboost-filesystem-dev libboost-program-options-dev libboost-thread-dev \
-        libssl-dev libdb++-dev libminiupnpc-dev
+##
+## subroutine to automate apt-get with error checkint
+##
+banner() {
+    text=$1
+    delimit=$2
+    msg="$delimit $text $delimit"
+    edge=$(echo "$msg" | sed "s/./$delimit/g")
+    echo
+    echo "$edge"
+    echo "$msg"
+    echo "$edge"
+    echo
+}
+
+my_aptget() {
+
+    echo "---->" installing dependancy $* 
+    sudo apt-get --yes install $*
+    if  [ $? != 0 ];  then
+        banner "FATAL ERROR: apt-get install $* FAILED" "#"
+        exit -1
+    fi
+}
+##
+## main script
+## 
+for word in qt5-default qt5-qmake qtbase5-dev-tools qttools5-dev-tools \
+            build-essential libboost-dev libboost-system-dev \
+            libboost-filesystem-dev libboost-program-options-dev libboost-thread-dev \
+            libssl-dev libdb++-dev libminiupnpc-dev; do
+    my_aptget $word
+done
 
 cd ~/NanoCheeZe
-qmake -recuresive
+qmake -recursive
 make

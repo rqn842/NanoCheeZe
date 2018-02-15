@@ -1,29 +1,70 @@
-## 
-## install the dependancies for building NanoXheeZe
-## 
-## Mike Hester 02/05/2018
-
-sudo apt-get update
-sudo apt-get upgrade
-## 
-sudo apt-get install build-essential libtool autotools-dev autoconf pkg-config libssl-dev
-sudo apt-get install libboost-all-dev
-sudo apt-get install libqt5gui5 libqt5core5 libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev protobuf-compiler
-sudo apt-get install libqrencode-dev
-sudo apt-get install libminiupnpc-dev
-suto apt-get install git
-
-#Download and compile Berkley DB 4.8
-#-----------------------------------
-##
-## added MEH  to resolve build error : LRELEASE not found
-##
-sudo apt-get install qttools5-dev-tools
-sudo apg-get install libminiupnpc-dev
-sudo apt-get install protobuf
+#! /bin/bash 
+###########################################################
+###install the dependancies for building NanoXheeZe
+###allow to run unattended  using --yes, etc
+###########################################################
 
 ##
-## Build BERKELEY DB 4.8
+## subroutine to automate apt-get with error checkint
+##
+banner() {
+    text=$1
+    delimit=$2
+    msg="$delimit $text $delimit"
+    edge=$(echo "$msg" | sed "s/./$delimit/g")
+    echo
+    echo "$edge"
+    echo "$msg"
+    echo "$edge"
+    echo
+}
+
+my_aptget() {
+
+    echo "---->" installing dependancy $* 
+    sudo apt-get --yes install $*
+    if  [ $? != 0 ];  then
+        banner "FATAL ERROR: apt-get install $* FAILED" "#"
+        exit -1
+    fi
+}
+##
+## main script
+## 
+for word in build-essential libtool autotools-dev autoconf pkg-config libssl-dev libboost-all-dev libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev protobuf-compiler libqrencode-dev libminiupnpc-dev qttools5-dev-tools libminiupnpc-dev; do
+##  protobuf; do
+    my_aptget $word
+done
+
+
+##
+## Download and compile Berkley DB 4.8
+## and stash it where NanoCheeZe can find it
+## Force failure if the tar ball already exists
+##
 cd ~
-wget 'http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz'
+echo "---->" fetching Berkeley archive
+wget -nc 'http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz'
+if  [ $? != 0 ];  then
+      banner "FATAL ERROR: getting Berkley DB archive" "#"
+      exit -1
+fi
+echo "---->" extracting Berkeley archive
 tar -xzvf db-4.8.30.NC.tar.gz
+if  [ $? != 0 ];  then
+      banner "FATAL ERROR: cannot extract Berkley DB archive" "#"
+      exit -1
+fi
+echo "---->" configuring Berkeley DB build
+cd ~/db-4.8.30.NC/build_unix
+../dist/configure --enable-cxx --disable-shared --with-pic --prefix=/home/rqn842/NanoCheeZe/db4/
+if  [ $? != 0 ];  then
+      banner "FATAL ERROR: configure Berkly DB build" "#"
+      exit -1
+fi
+echo "---->" building Berkeley DB binaries
+make install
+if  [ $? != 0 ];  then
+      banner  "FATAL ERROR: compiling Berkley DB binaries" "#"
+      exit -1
+fi
