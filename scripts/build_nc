@@ -15,5 +15,5 @@ cd ~/NanoCheeZe/src
 make -f makefile.unix
 ## 
 ## 
-cd scripts
+cd ../scripts
 ./build_qt
